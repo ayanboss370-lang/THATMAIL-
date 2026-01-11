@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THATMAIL - Fixed & Final</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="welcome-screen" class="auth-screen">
+            <div class="auth-card">
+                <h1 class="logo-text">THATMAIL</h1>
+                <div class="welcome-icon">💬</div>
+                <p>Welcome to a better way to chat.</p>
+                <button class="main-btn" onclick="goToAuth()">GET STARTED</button>
+            </div>
+        </div>
+
+        <div id="login-screen" class="auth-screen" style="display:none;">
+            <div class="auth-card">
+                <button onclick="backToWelcome()" class="back-btn">← Back</button>
+                <h2 class="logo-text">Setup Account</h2>
+                <input type="text" id="user-name" placeholder="Full Name">
+                <input type="email" id="email" placeholder="Gmail ID">
+                <input type="number" id="phone" placeholder="Phone Number">
+                <input type="password" id="password" placeholder="Password">
+                <div id="otp-area" style="display:none;">
+                    <input type="number" id="otp-input" placeholder="Enter OTP">
+                    <button id="verify-btn" class="main-btn">Verify & Create</button>
+                </div>
+                <button id="login-btn" class="main-btn">Log In</button>
+                <div class="divider"><span>OR</span></div>
+                <button id="signup-request-btn" class="sec-btn">Signup with OTP</button>
+            </div>
+        </div>
+
+        <div id="chat-screen" style="display:none;">
+            <header id="chat-header">
+                <div id="header-left">
+                    <span id="back-to-list" style="display:none; cursor:pointer; font-size:22px;" onclick="closeDirectChat()">← </span>
+                    <span id="chat-title" class="app-name">THATMAIL</span>
+                </div>
+                <div class="header-right">
+                    <button id="contact-btn" onclick="toggleContacts()">👤 Contacts</button>
+                    <img id="header-pic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" onclick="openProfile()">
+                </div>
+            </header>
+            <main id="messages"></main>
+            <div id="contact-sidebar" style="display:none;">
+                <h3>Contacts</h3>
+                <div id="contact-list"></div>
+            </div>
+            <footer id="input-area">
+                <input type="text" id="msg-input" placeholder="Type a message...">
+                <button id="send-btn">➤</button>
+            </footer>
+        </div>
+
+        <div id="profile-modal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" onclick="closeProfile()">&times;</span>
+                <h2>My Profile</h2>
+                <img id="profile-pic-display" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" style="width:100px; height:100px; border-radius:50%; border:3px solid #075e54;">
+                <p id="prof-name" style="margin-top:10px; font-weight:bold; font-size:18px;"></p>
+                <p id="prof-phone" style="color:gray; font-size:14px;"></p>
+                <button onclick="forceLogout()" class="main-btn" style="background:#ff4757; margin-top:20px;">LOGOUT NOW</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
